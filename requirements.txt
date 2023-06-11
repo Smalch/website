@@ -1,0 +1,5 @@
+fastapi
+streamlit
+xformers
+streamlit-chat
+einops
