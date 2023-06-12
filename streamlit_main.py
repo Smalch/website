@@ -29,9 +29,9 @@ def last_answer():
                 return response.json()
         sleep(3)
 
-def submit():
-    st.session_state.something = st.session_state.widget
-    st.session_state.widget = ''
+def submit_question():
+    st.session_state.something = st.session_state.question
+    st.session_state.question = ''
 
 def main():
     st.set_page_config(page_title='LLM Demo', page_icon=':robot_face:')
@@ -41,12 +41,9 @@ def main():
     # placeholder = st.empty()
     # with placeholder.form(key = 'my_form', clear_on_submit=False):
 
-    if 'something' not in st.session_state:
-        st.session_state.something = ''
+    if 'q' not in st.session_state:
+        st.session_state.q = ''
 
-
-
-    st.text_input('Something', key='widget', on_change=submit)
 
 
 
@@ -55,7 +52,7 @@ def main():
     if "q" not in st.session_state:
         st.session_state.q = ''
 
-    input = st.text_input('Ask a question', key='question', value=st.session_state.q)
+    input = st.text_input('Ask a question', key='question', on_change=submit_question)
 
     # placeholder = st.empty()
     # input_ = st.text_input("Ask a question")
