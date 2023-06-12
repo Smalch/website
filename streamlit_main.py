@@ -45,15 +45,14 @@ def main():
     if input:
         setup_history(st.session_state.history)
         message(input, is_user=True, key=str(len(st.session_state.history)))
-        st.session_state.text = ""
         st.session_state.history.append(input)
         with st.spinner('Processing'):
-            response = requests.get(
+            response = requests.post(
                 f"{url}/qa_from_files/",
                 json={"query": input},
             )
+
         print(response.status_code)
-        sleep(7)
         print(response.json())
         st.session_state.history.append(response.json())
         message(response.json(), key=str(len(st.session_state.history)))
