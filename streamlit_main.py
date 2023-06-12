@@ -29,6 +29,10 @@ def last_answer():
                 return response.json()
         sleep(3)
 
+def submit():
+    st.session_state.something = st.session_state.widget
+    st.session_state.widget = ''
+
 def main():
     st.set_page_config(page_title='LLM Demo', page_icon=':robot_face:')
     st.title("LLM Demo")
@@ -37,7 +41,12 @@ def main():
     # placeholder = st.empty()
     # with placeholder.form(key = 'my_form', clear_on_submit=False):
 
+    if 'something' not in st.session_state:
+        st.session_state.something = ''
 
+
+
+    st.text_input('Something', key='widget', on_change=submit)
 
 
 
