@@ -43,7 +43,7 @@ def main():
 
     if "history" not in st.session_state:
         st.session_state.history = []
-    if "question" not in st.session_state:
+    if "q" not in st.session_state:
         st.session_state.q = ''
 
     input = st.text_input('Ask a question', key='question', value=st.session_state.q)
