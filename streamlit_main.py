@@ -64,11 +64,11 @@ def main():
         message(input, is_user=True, key=str(len(st.session_state.history)))
         st.session_state.history.append(input)
         with st.spinner('Processing'):
-            response = requests.post(
-                f"{url}/qa_from_files/",
-                json={"query": input},
-            )
             try:
+                response = requests.post(
+                    f"{url}/qa_from_files/",
+                    json={"query": input},
+                )
                 if response.status_code != 200:
                     answer = last_answer()
                 else:
