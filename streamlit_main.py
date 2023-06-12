@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 from streamlit_chat import message
 from time import sleep
-
+url = "http://34.149.30.111/"
 
 def setup_history(history):
     for id, line in enumerate(history):
@@ -33,7 +33,7 @@ def main():
             with st.spinner('Processing files'):
                 if pdf_docs is not None:
                     response = requests.post(
-                        "http://localhost:8000/upload_pdf/",
+                        f"{url}/upload_pdf/",
                         files={"file": pdf_docs},
                     )
 
@@ -43,8 +43,8 @@ def main():
         message(input, is_user=True, key=str(len(st.session_state.history)))
         st.session_state.history.append(input)
         with st.spinner('Processing'):
-            response = requests.get(
-                "http://localhost:8000/qa_from_files/",
+            response = requests.post(
+                f"{url}/qa_from_files/",
                 json={"query": input},
             )
 
