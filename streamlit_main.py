@@ -48,7 +48,7 @@ def main():
         st.session_state.text = ""
         st.session_state.history.append(input)
         with st.spinner('Processing'):
-            response = requests.post(
+            response = requests.get(
                 f"{url}/qa_from_files/",
                 json={"query": input},
             )
