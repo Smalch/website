@@ -8,6 +8,16 @@ def setup_history(history):
     for id, line in enumerate(history):
         message(line, is_user=id%2==0, key=str(id))
 
+
+def last_answer():
+    while True:
+        response = requests.post(
+            f"{url}/last_answer/",
+        )
+        if response.status_code == 200:
+            return response.json()
+        sleep(3)
+
 def main():
     st.set_page_config(page_title='LLM Demo', page_icon=':robot_face:')
     st.title("LLM Demo")
@@ -51,11 +61,12 @@ def main():
                 f"{url}/qa_from_files/",
                 json={"query": input},
             )
-
-        print(response.status_code)
-        print(response.json())
-        st.session_state.history.append(response.json())
-        message(response.json(), key=str(len(st.session_state.history)))
+        if response.status_code != 200:
+            answer = last_answer()
+        else:
+            answer = response.json()
+        st.session_state.history.append(answer)
+        message(answer, key=str(len(st.session_state.history)))
 
 if __name__ == "__main__":
     main()
