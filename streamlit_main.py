@@ -44,9 +44,9 @@ def main():
     if "history" not in st.session_state:
         st.session_state.history = []
     if "question" not in st.session_state:
-        st.session_state.question = ''
+        st.session_state.q = ''
 
-    input = st.text_input('Ask a question', key='question', value=st.session_state.question)
+    input = st.text_input('Ask a question', key='question', value=st.session_state.q)
 
     # placeholder = st.empty()
     # input_ = st.text_input("Ask a question")
@@ -72,7 +72,7 @@ def main():
         setup_history(st.session_state.history)
         message(input, is_user=True, key=str(len(st.session_state.history)))
         st.session_state.history.append(input)
-        st.session_state.question = ''
+        st.session_state.q = ''
         with st.spinner('Processing'):
             try:
                 response = requests.post(
