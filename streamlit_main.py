@@ -13,7 +13,10 @@ def main():
     st.title("LLM Demo")
     st.markdown("## A demo of the Chat model by Artem")
     st.header("Chat with the model")
-    input = st.text_input('Ask a question', key='question')
+
+    placeholder = st.empty()
+    input = placeholder.text_input(label='Ask a question', key='question', clear_on_submit=True)
+
 
     if "history" not in st.session_state:
         st.session_state.history = []
@@ -41,13 +44,14 @@ def main():
     if input:
         setup_history(st.session_state.history)
         message(input, is_user=True, key=str(len(st.session_state.history)))
+        st.session_state.text = ""
         st.session_state.history.append(input)
         with st.spinner('Processing'):
             response = requests.post(
                 f"{url}/qa_from_files/",
                 json={"query": input},
             )
-
+        print(response.json())
         st.session_state.history.append(response.json())
         message(response.json(), key=str(len(st.session_state.history)))
 
