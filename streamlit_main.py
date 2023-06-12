@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 from streamlit_chat import message
 from time import sleep
-url = "http://34.149.30.111/"
+url = "http://34.149.30.111"
 
 def setup_history(history):
     for id, line in enumerate(history):
