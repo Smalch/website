@@ -30,7 +30,7 @@ def last_answer():
         sleep(3)
 
 def submit_question():
-    st.session_state.something = st.session_state.question
+    st.session_state.input = st.session_state.question
     st.session_state.question = ''
 
 def main():
@@ -52,7 +52,7 @@ def main():
     if "q" not in st.session_state:
         st.session_state.q = ''
 
-    input = st.text_input('Ask a question', key='question', on_change=submit_question)
+    st.text_input('Ask a question', key='question', on_change=submit_question)
 
     # placeholder = st.empty()
     # input_ = st.text_input("Ask a question")
@@ -73,7 +73,7 @@ def main():
                         files={"file": pdf_docs},
                     )
 
-
+    input = st.session_state.input
     if input:
         setup_history(st.session_state.history)
         message(input, is_user=True, key=str(len(st.session_state.history)))
