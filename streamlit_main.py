@@ -30,7 +30,7 @@ def last_answer():
         sleep(3)
 
 def submit_question():
-    st.session_state.input = st.session_state.question
+    st.session_state.q = st.session_state.question
     st.session_state.question = ''
 
 def main():
@@ -73,7 +73,7 @@ def main():
                         files={"file": pdf_docs},
                     )
 
-    input = st.session_state.input
+    input = st.session_state.q
     if input:
         setup_history(st.session_state.history)
         message(input, is_user=True, key=str(len(st.session_state.history)))
