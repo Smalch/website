@@ -15,7 +15,8 @@ def main():
     st.header("Chat with the model")
 
     placeholder = st.empty()
-    input = placeholder.text_input(label='Ask a question', key='question', clear_on_submit=True)
+    with placeholder.form(key = 'my_form', clear_on_submit=True):
+        input = placeholder.text_input(label='Ask a question', key='question')
 
 
     if "history" not in st.session_state:
