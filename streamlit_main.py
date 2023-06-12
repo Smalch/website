@@ -2,7 +2,6 @@ import streamlit as st
 import requests
 from streamlit_chat import message
 from time import sleep
-import SessionState
 
 url = "http://34.149.30.111"
 
@@ -35,8 +34,6 @@ def main():
     st.title("LLM Demo")
     st.markdown("## A demo of the Chat model by Artem")
     st.header("Chat with the model")
-    # Get the session state
-    state = SessionState.get(name="", button_sent=False)
     # placeholder = st.empty()
     # with placeholder.form(key = 'my_form', clear_on_submit=False):
     with st.form(key='input_form', clear_on_submit=True):
