@@ -36,7 +36,7 @@ def main():
 
     # placeholder = st.empty()
     # with placeholder.form(key = 'my_form', clear_on_submit=False):
-    input = st.text_input('Ask a question', key='question')
+    input = st.text_input('Ask a question', key='question', value='')
 
 
     if "history" not in st.session_state:
