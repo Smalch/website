@@ -14,9 +14,9 @@ def main():
     st.markdown("## A demo of the Chat model by Artem")
     st.header("Chat with the model")
 
-    placeholder = st.empty()
-    with placeholder.form(key = 'my_form', clear_on_submit=False):
-        input = placeholder.text_input(label='Ask a question', key='question')
+    # placeholder = st.empty()
+    # with placeholder.form(key = 'my_form', clear_on_submit=False):
+    input = st.text_input(label='Ask a question', key='question')
 
 
     if "history" not in st.session_state:
