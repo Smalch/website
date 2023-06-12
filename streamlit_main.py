@@ -57,6 +57,7 @@ def main():
         setup_history(st.session_state.history)
         message(input, is_user=True, key=str(len(st.session_state.history)))
         st.session_state.history.append(input)
+        st.session_state["question"] = ""
         with st.spinner('Processing'):
             response = requests.post(
                 f"{url}/qa_from_files/",
