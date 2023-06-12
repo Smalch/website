@@ -11,6 +11,9 @@ def setup_history(history):
 
 def last_answer():
     while True:
+
+        print('last_answer')
+        sleep(10)
         response = requests.post(
             f"{url}/last_answer/",
         )
