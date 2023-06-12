@@ -68,6 +68,7 @@ def main():
                 answer = last_answer()
             else:
                 answer = response.json()
+        print(answer)
         st.session_state.history.append(answer)
         message(answer, key=str(len(st.session_state.history)))
 
