@@ -64,10 +64,13 @@ def main():
                 f"{url}/qa_from_files/",
                 json={"query": input},
             )
-            if response.status_code != 200:
+            try:
+                if response.status_code != 200:
+                    answer = last_answer()
+                else:
+                    answer = response.json()
+            except:
                 answer = last_answer()
-            else:
-                answer = response.json()
         print(answer)
         st.session_state.history.append(answer)
         message(answer, key=str(len(st.session_state.history)))
