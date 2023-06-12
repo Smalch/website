@@ -14,6 +14,10 @@ def last_answer():
         response = requests.post(
             f"{url}/last_answer/",
         )
+        print(response)
+        sleep(10)
+
+
         if response.status_code == 200:
             if response.json() != "None":
                 print(response)
