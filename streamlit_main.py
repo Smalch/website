@@ -15,7 +15,7 @@ def main():
     st.header("Chat with the model")
 
     placeholder = st.empty()
-    with placeholder.form(key = 'my_form', clear_on_submit=True):
+    with placeholder.form(key = 'my_form', clear_on_submit=False):
         input = placeholder.text_input(label='Ask a question', key='question')
 
 
