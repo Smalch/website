@@ -52,6 +52,7 @@ def main():
                 f"{url}/qa_from_files/",
                 json={"query": input},
             )
+        print(response.status_code)
         print(response.json())
         st.session_state.history.append(response.json())
         message(response.json(), key=str(len(st.session_state.history)))
