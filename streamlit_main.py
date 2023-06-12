@@ -16,6 +16,8 @@ def last_answer():
         )
         if response.status_code == 200:
             if response.json() != "None":
+                print(response)
+                print(response.json())
                 return response.json()
         sleep(3)
 
