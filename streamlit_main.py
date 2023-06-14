@@ -74,8 +74,8 @@ def main():
                     )
 
     input = st.session_state.q
+    setup_history(st.session_state.history)
     if input and input != '':
-        setup_history(st.session_state.history)
         message(input, is_user=True, key=str(len(st.session_state.history)))
         st.session_state.history.append(input)
         st.session_state.q = ''
